@@ -18,6 +18,13 @@ public class PersonView(context: Context, attrs: AttributeSet?) : LinearLayout(c
 
   // List binding with optional items being omitted.
   val nameViews: List<TextView> by bindOptionalViews(R.id.first_name, R.id.middle_name, R.id.last_name)
+
+  // List binding and external initialize
+  val nameViewsEx: List<TextView> by bindViews(R.id.first_name, R.id.last_name, { initTextColor(it) })
+  private fun initTextColor(textView:TextView):TextView {
+      textView.setTextColor(Color.RED)
+      return textView
+  }
 }
 ```
 
